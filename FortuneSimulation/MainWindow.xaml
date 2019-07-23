@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FortuneSimulation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="850" Width="1304" Loaded="Window_Loaded" WindowState="Maximized">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="Grid_borders" Width="800" Height="800" Margin="5">
+        </Grid>
+        <Grid x:Name="Grid_map" Width="800" Height="800" Margin="5">
+        </Grid>
+
+        <Grid x:Name="Grid_gridViewHolder" Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="309*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <DockPanel>
+                    <Button x:Name="Btn_start" Content="Start/Reset" Width="100" Height="35" Click="Btn_start_Click" Margin="5"/>
+                    <Button x:Name="Btn_1step" Content="Run1Step" Width="100" Height="35" Click="Btn_1step_Click" Margin="5"/>
+                    <Button x:Name="Btn_run" Content="Run" Width="100" Height="35" Click="Btn_run_Click" Margin="5"/>
+                    <Button x:Name="Btn_pause" Content="Pause" Width="100" Height="35" Click="Btn_pause_Click" Margin="5" IsEnabled="False"/>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Target days: " Margin="5" Width="100"/>
+                    <TextBox x:Name="TB_targetRounds" Margin="5" Width="100" Text="200" VerticalAlignment="Center"/>
+                    <Label x:Name="lbl_round" Content="Current Day: " Margin="5"/>
+                </DockPanel>
+                <DockPanel HorizontalAlignment="Left">
+                    <Label Content="No. of NPCs: " Margin="5" Width="100"/>
+                    <TextBox x:Name="TB_npcs" Margin="5" Width="100" Text="10" VerticalAlignment="Center"/>
+                </DockPanel>
+
+            </StackPanel>
+            <Grid x:Name="ListViewHolder" Grid.Row="1" Margin="5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="mListView" />
+                </ScrollViewer>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
